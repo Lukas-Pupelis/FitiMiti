@@ -9,8 +9,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "MEMBER")
-public class Member {
+@Table(name = "exercise")
+public class Exercise {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "ID", nullable = false)
@@ -20,13 +20,13 @@ public class Member {
    @Column(name = "NAME")
    private String name;
 
+   @ManyToOne
+   private Member member;
 
-   @OneToMany(mappedBy = "member")
-   private List<Member_weight_entry> member_weight_entries;
+   @Basic
+   @Column(name = "SHARED")
+   private Boolean shared;
 
-   @OneToMany(mappedBy = "member")
-   private List<Workout> workouts;
-
-   @OneToMany(mappedBy = "member")
-   private List<Exercise> exercises;
+   @OneToMany(mappedBy = "exercise")
+   private List<Workout_exercise> workoutExerciseList;
 }
