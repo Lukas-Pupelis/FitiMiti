@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Workout</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Add Workout</h1>
+<form th:action="@{/add-workout}" th:object="${workout}" method="post">
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" id="date" th:field="*{date}" required />
+  </div>
+  <div>
+    <button type="submit">Add Workout</button>
+  </div>
+</form>
+</body>
+</html>
