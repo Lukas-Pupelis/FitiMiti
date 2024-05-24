@@ -31,10 +31,13 @@ public class WorkoutController {
     @PostMapping("/add-workout")
     public String addWorkout(@ModelAttribute Workout workout, BindingResult result, @AuthenticationPrincipal OAuth2User principal) {
         if (result.hasErrors()) {
+            result.getAllErrors().forEach(error -> {
+                System.out.println("Validation error: " + error.getDefaultMessage());
+            });
             return "add-workout";
         }
         String email = principal.getAttribute("email");
         workoutService.addWorkout(email, workout);
-        return "redirect:/hello";
+        return "add-workout";
     }
 }
