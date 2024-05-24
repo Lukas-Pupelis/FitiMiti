@@ -26,4 +26,8 @@ public class MemberService {
       Optional<Member> member = memberRepository.findByEmail(email);
       return member.orElse(null);
    }
+
+   public void saveMember(Member member) {
+      memberRepository.save(member);
+   }
 }
