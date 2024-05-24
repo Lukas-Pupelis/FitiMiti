@@ -17,9 +17,12 @@ public class Member {
    private Long id;
 
    @Basic
+   @Column(name = "EMAIL")
+   private String email;
+
+   @Basic
    @Column(name = "NAME")
    private String name;
-
 
    @OneToMany(mappedBy = "member")
    private List<Member_weight_entry> member_weight_entries;
