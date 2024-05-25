@@ -24,7 +24,9 @@ public class WorkoutService {
     public List<Workout> getAllWorkouts() {
         return workoutRepository.findAll();
     }
-
+    public List<Workout> getWorkoutsByMemberId(Long memberId) {
+        return workoutRepository.findByMemberId(memberId);
+    }
     public Workout addWorkout(String memberEmail, Workout workout) {
         Member member = memberRepository.findByEmail(memberEmail).orElseThrow(() -> new RuntimeException("Member not found"));
         workout.setMember(member);

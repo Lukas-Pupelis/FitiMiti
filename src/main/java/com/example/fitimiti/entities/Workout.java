@@ -22,6 +22,8 @@ public class Workout {
    @DateTimeFormat(pattern = "yyyy-MM-dd")
    private LocalDate date;
 
+   @Column(name = "NAME")
+   private String name;
 
    @ManyToOne
    private Member member;
