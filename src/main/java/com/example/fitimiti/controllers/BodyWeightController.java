@@ -2,7 +2,6 @@ package com.example.fitimiti.controllers;
 
 import com.example.fitimiti.entities.Member;
 import com.example.fitimiti.entities.Member_weight_entry;
-import com.example.fitimiti.entities.Workout;
 import com.example.fitimiti.services.MemberService;
 import com.example.fitimiti.services.BodyWeightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/bodyWeight")
@@ -26,10 +24,8 @@ public class BodyWeightController {
         this.bodyWeightService = bodyWeightService;
         this.memberService = memberService;
     }
-//@ModelAttribute Member_weight_entry weightEntry
     @PostMapping
-    public String addWeight(@AuthenticationPrincipal OAuth2User principal, Float weight, BindingResult result) {
-        System.out.println("AR JIS BLET PASIEKIA CIA AR NE NX");
+    public String addWeight(@AuthenticationPrincipal OAuth2User principal, @ModelAttribute Member_weight_entry weightEntry, BindingResult result, Model model) {
         String email = principal.getAttribute("email");
         Member member = memberService.getMemberByEmail(email);
         if (member == null) {
@@ -39,40 +35,31 @@ public class BodyWeightController {
             result.getAllErrors().forEach(error -> System.out.println("Validation error: " + error.getDefaultMessage()));
             return "/bodyWeight";
         }
-        Member_weight_entry weightEntry = new Member_weight_entry();
-        weightEntry.setWeight(weight);
         weightEntry.setMember(member);
         weightEntry.setDate(new java.util.Date());
 
         bodyWeightService.addWeight(email, weightEntry);
-        return "/bodyWeight";
+        return "redirect:/bodyWeight";
     }
 
     @GetMapping
-    public String getWeights(@AuthenticationPrincipal OAuth2User principal, @RequestParam(defaultValue = "3m") String period, Model model) {
-        try {
-            String email = principal.getAttribute("email");
-            Member member = memberService.getMemberByEmail(email);
-            if (member == null) {
-                return "redirect:/register";
-            }
-
-            List<Member_weight_entry> weights = bodyWeightService.getBodyWeightByMemberId(member.getId(), period);
-            model.addAttribute("weights", weights);
-            model.addAttribute("member", member);
-            return "bodyWeight";
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Erroras controller get weights");
-
-            return "error";
+    public String getWeights(@RequestParam(defaultValue = "3m") String period, Model model, @AuthenticationPrincipal OAuth2User principal) {
+        String email = principal.getAttribute("email");
+        Member member = memberService.getMemberByEmail(email);
+        if (member == null) {
+            return "redirect:/register";
         }
-    }
 
-    @ExceptionHandler(Exception.class)
-    public String handleException(Exception e) {
-        e.printStackTrace();
-        System.out.println("Erroras controller Handle Exeption");
-        return "error";
+        List<Member_weight_entry> weights = bodyWeightService.getBodyWeightByMemberId(member.getId(), period);
+        Member_weight_entry weight = null;
+        try{
+            weight = weights.get(weights.size() - 1);
+        } catch(IndexOutOfBoundsException e){
+            weight = new Member_weight_entry();
+        }
+        model.addAttribute("weights", weights);
+        model.addAttribute("member", member);
+        model.addAttribute("weight", weight);
+        return "/bodyWeight";
     }
 }

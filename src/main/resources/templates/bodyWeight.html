@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head xmlns:th="http://www.thymeleaf.org" lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Weight Tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         .form-container {
             margin: 20px;
@@ -18,10 +20,9 @@
 <body>
 <div class="form-container">
     <h2>Enter Your Weight</h2>
-    <form action="/bodyWeight" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <form th:action="@{/bodyWeight}" th:object="${weight}" method="post">
         <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" name="weight" required>
+        <input type="number" step="0.1" id="weight" th:field="*{weight}" required />
         <button type="submit">Submit</button>
     </form>
 </div>
