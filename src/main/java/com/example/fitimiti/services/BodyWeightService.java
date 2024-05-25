@@ -1,7 +1,10 @@
 package com.example.fitimiti.services;
 
+import com.example.fitimiti.entities.Member;
 import com.example.fitimiti.entities.Member_weight_entry;
+import com.example.fitimiti.entities.Workout;
 import com.example.fitimiti.repositories.BodyWeightRepository;
+import com.example.fitimiti.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -9,10 +12,12 @@ import java.util.List;
 @Service
 public class BodyWeightService {
     private final BodyWeightRepository bodyWeightRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public BodyWeightService(BodyWeightRepository bodyWeightRepository) {
+    public BodyWeightService(BodyWeightRepository bodyWeightRepository, MemberRepository memberRepository) {
         this.bodyWeightRepository = bodyWeightRepository;
+        this.memberRepository = memberRepository;
     }
 
     public List<Member_weight_entry> getBodyWeightByMemberId(Long memberId, String period) {
@@ -24,13 +29,9 @@ public class BodyWeightService {
         }
     }
 
-    public void saveBodyWeight(Member_weight_entry bodyWeight) {
-        try {
-            bodyWeightRepository.save(bodyWeight);
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Optionally, throw a custom exception
-            throw new RuntimeException("Error saving body weight entry");
-        }
+    public void addWeight(String memberEmail, Member_weight_entry weightEntry) {
+        Member member = memberRepository.findByEmail(memberEmail).orElseThrow(() -> new RuntimeException("Member not found"));
+        weightEntry.setMember(member);
+        bodyWeightRepository.save(weightEntry);
     }
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Add Workout</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Add Workout</h1>
+<form th:action="@{/add-workout}" th:object="${workout}" method="post">
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" id="date" th:field="*{date}" required />
+    <label for="name">Workout name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+  </div>
+  <div>
+    <button type="submit">Add Workout</button>
+  </div>
+</form>
+<p><a th:href="@{/hello}">Get back</a></p>
+
+<h1 th:text="${member.name} + ' workouts:'"></h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Workout Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="workout : ${workouts}">
+    <td th:text="${workout.id}">1</td>
+    <td th:text="${workout.date}">2024-05-23</td>
+    <td th:text="${workout.name}">Chest</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
