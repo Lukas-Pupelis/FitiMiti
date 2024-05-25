@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .form-container {
+            margin: 20px;
+        }
+        .graph-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Enter Your Weight</h2>
+    <form id="weightForm">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" required>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="graph-container">
+    <h2>Weight Change Over Time</h2>
+    <label for="timePeriod">Select Time Period:</label>
+    <select id="timePeriod">
+        <option value="1d">1 Day</option>
+        <option value="7d">Last Week</option>
+        <option value="1m">Last Month</option>
+        <option value="3m">Last 3 Months</option>
+        <option value="1y">Last Year</option>
+        <option value="all">All Time</option>
+    </select>
+    <canvas id="weightChart"></canvas>
+</div>
+
+<script>
+    // Initialize Chart.js chart
+    const ctx = document.getElementById('weightChart').getContext('2d');
+    let weightChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Weight (kg)',
+                data: [],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: true,
+            }]
+        },
+        options: {
+            scales: {
+                x: { type: 'time', time: { unit: 'day' } },
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Handle form submission
+    document.getElementById('weightForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const weight = document.getElementById('weight').value;
+        const token = localStorage.getItem('token'); // Assuming OAuth token is stored in localStorage
+
+        try {
+            await fetch('/bodyWeight', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ weight: parseFloat(weight) }) // Ensure weight is sent as a float
+            });
+            alert('Weight submitted successfully');
+            await loadWeightData();
+        } catch (error) {
+            console.error('Error submitting weight:', error);
+            alert('Error submitting weight');
+        }
+    });
+
+    // Handle time period change
+    document.getElementById('timePeriod').addEventListener('change', loadWeightData);
+
+    async function loadWeightData() {
+        const period = document.getElementById('timePeriod').value;
+
+        try {
+            const response = await fetch(`/bodyWeight?period=${period}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const data = await response.json();
+            const labels = data.map(entry => new Date(entry.date));
+            const weights = data.map(entry => entry.weight);
+
+            weightChart.data.labels = labels;
+            weightChart.data.datasets[0].data = weights;
+            weightChart.update();
+        } catch (error) {
+            console.error('Error loading weight data:', error);
+            alert('Error loading weight data');
+        }
+    }
+
+    loadWeightData();
+</script>
+</body>
+</html>
