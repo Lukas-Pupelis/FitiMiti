@@ -46,6 +46,6 @@ public class WorkoutController {
         }
         String email = principal.getAttribute("email");
         workoutService.addWorkout(email, workout);
-        return "add-workout";
+        return "redirect:/add-workout";
     }
 }
