@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exercises</title>
+</head>
+<body>
+<p><a th:href="@{/hello}">Go Back</a></p> <!-- Assuming you have a logout endpoint -->
+
+<h1>Exercises</h1>
+
+<div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+</div>
+
+<h2>Add New Exercise</h2>
+<form th:action="@{/exercises}" th:object="${exercise}" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+    </div>
+    <div>
+        <label for="shared">Shared:</label>
+        <input type="checkbox" id="shared" th:field="*{shared}" />
+    </div>
+    <div>
+        <button type="submit">Add Exercise</button>
+    </div>
+</form>
+
+<h2>My Exercises</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Shared</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="exercise : ${memberExercises}">
+        <td th:text="${exercise.id}"></td>
+        <td th:text="${exercise.name}"></td>
+        <td th:text="${exercise.shared}"></td>
+        <td>
+            <a th:href="@{/exercises/edit(id=${exercise.id})}">Edit</a>
+            <a th:href="@{/exercises/delete(id=${exercise.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Shared Exercises</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="exercise : ${sharedExercises}">
+        <td th:text="${exercise.id}"></td>
+        <td th:text="${exercise.name}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
