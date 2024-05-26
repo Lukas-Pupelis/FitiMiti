@@ -6,11 +6,14 @@
 
     <title>Weight Tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
 
     <style>
         .form-container {
             margin: 20px;
         }
+
         .graph-container {
             width: 80%;
             margin: 20px auto;
@@ -22,7 +25,7 @@
     <h2>Enter Your Weight</h2>
     <form th:action="@{/bodyWeight}" th:object="${weight}" method="post">
         <label for="weight">Weight (kg):</label>
-        <input type="number" step="0.1" id="weight" th:field="*{weight}" required />
+        <input type="number" step="0.1" id="weight" th:field="*{weight}" required/>
         <button type="submit">Submit</button>
     </form>
 </div>
@@ -59,8 +62,8 @@
         },
         options: {
             scales: {
-                x: { type: 'time', time: { unit: 'day' } },
-                y: { beginAtZero: true }
+                x: {type: 'time', time: {unit: 'day'}},
+                y: {beginAtZero: true}
             }
         }
     });
