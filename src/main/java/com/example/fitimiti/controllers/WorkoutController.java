@@ -1,8 +1,12 @@
 package com.example.fitimiti.controllers;
 
+import com.example.fitimiti.entities.Exercise;
 import com.example.fitimiti.entities.Member;
 import com.example.fitimiti.entities.Workout;
+import com.example.fitimiti.entities.Workout_exercise;
+import com.example.fitimiti.services.ExerciseService;
 import com.example.fitimiti.services.MemberService;
+import com.example.fitimiti.services.WorkoutExerciseService;
 import com.example.fitimiti.services.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,21 +14,24 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class WorkoutController {
 
     private final WorkoutService workoutService;
     private final MemberService memberService;
-
+    private final ExerciseService exerciseService;
+    private final WorkoutExerciseService workoutExerciseService;
 
     @Autowired
-    public WorkoutController(WorkoutService workoutService, MemberService memberService) {
+    public WorkoutController(WorkoutService workoutService, MemberService memberService, ExerciseService exerciseService, WorkoutExerciseService workoutExerciseService) {
         this.workoutService = workoutService;
         this.memberService = memberService;
+        this.exerciseService = exerciseService;
+        this.workoutExerciseService = workoutExerciseService;
     }
 
     @GetMapping("/add-workout")
@@ -47,5 +54,61 @@ public class WorkoutController {
         String email = principal.getAttribute("email");
         workoutService.addWorkout(email, workout);
         return "redirect:/add-workout";
+    }
+
+    @GetMapping("/workouts/edit")
+    public String showEditWorkoutForm(@RequestParam Long id, Model model, @AuthenticationPrincipal OAuth2User principal) {
+        Workout workout = workoutService.getWorkoutById(id);
+        Member member = memberService.getMemberByEmail(principal.getAttribute("email"));
+        model.addAttribute("member", member);
+        model.addAttribute("workout", workout);
+        return "edit-workout";
+    }
+
+    @PostMapping("/workouts/update")
+    public String updateWorkout(@ModelAttribute Workout workout, BindingResult result, @AuthenticationPrincipal OAuth2User principal) {
+        if (result.hasErrors()) {
+            result.getAllErrors().forEach(error -> {
+                System.out.println("Validation error: " + error.getDefaultMessage());
+            });
+            return "edit-workout";
+        }
+        String email = principal.getAttribute("email");
+        workoutService.updateWorkout(email, workout);
+        return "redirect:/add-workout";
+    }
+
+    @GetMapping("/workouts/delete")
+    public String deleteWorkout(@RequestParam Long id) {
+        workoutService.deleteWorkout(id);
+        return "redirect:/add-workout";
+    }
+
+    @GetMapping("/workouts/{id}/exercises")
+    public String showWorkoutExercises(@PathVariable Long id, Model model, @AuthenticationPrincipal OAuth2User principal) {
+        Workout workout = workoutService.getWorkoutById(id);
+        Member member = memberService.getMemberByEmail(principal.getAttribute("email"));
+        List<Workout_exercise> exercises = workoutExerciseService.getExercisesByWorkoutId(id);
+        List<Exercise> sharedExercises = exerciseService.getSharedExercises();
+        List<Exercise> memberExercises = exerciseService.getExercisesByMemberId(member.getId());
+
+        model.addAttribute("workout", workout);
+        model.addAttribute("exercises", exercises);
+        model.addAttribute("workoutExercise", new Workout_exercise());
+        model.addAttribute("sharedExercises", sharedExercises);
+        model.addAttribute("memberExercises", memberExercises);
+        return "workout-exercises";
+    }
+
+    @PostMapping("/workouts/{id}/exercises/add")
+    public String addExerciseToWorkout(@PathVariable Long id, @ModelAttribute Workout_exercise workoutExercise, BindingResult result) {
+        if (result.hasErrors()) {
+            result.getAllErrors().forEach(error -> {
+                System.out.println("Validation error: " + error.getDefaultMessage());
+            });
+            return "redirect:/workouts/" + id + "/exercises";
+        }
+        workoutExerciseService.addExerciseToWorkout(workoutExercise);
+        return "redirect:/workouts/" + id + "/exercises";
     }
 }

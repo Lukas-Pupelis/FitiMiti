@@ -26,6 +26,7 @@
     <th>ID</th>
     <th>Date</th>
     <th>Workout Name</th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -33,6 +34,11 @@
     <td th:text="${workout.id}">1</td>
     <td th:text="${workout.date}">2024-05-23</td>
     <td th:text="${workout.name}">Chest</td>
+    <td>
+      <a th:href="@{/workouts/edit(id=${workout.id})}">Edit</a>
+      <a th:href="@{/workouts/delete(id=${workout.id})}">Delete</a>
+      <a th:href="@{/workout/{id}(id=${workout.id})}">View Workout</a>
+    </td>
   </tr>
   </tbody>
 </table>
