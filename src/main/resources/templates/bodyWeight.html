@@ -57,15 +57,16 @@
                 data: [],
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                fill: true,
+                fill: false,
             }]
         },
         options: {
             scales: {
-                x: {type: 'time', time: {unit: 'day'}},
+                x: {type: 'time', time: {unit: 'month'}, grid: {display: false}},
                 y: {beginAtZero: true}
             }
         }
+
     });
 
     // Handle time period change
