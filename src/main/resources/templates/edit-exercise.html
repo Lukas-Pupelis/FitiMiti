@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Exercise</title>
+</head>
+<body>
+<h1>Edit Exercise</h1>
+<form th:action="@{/exercises/update}" th:object="${exercise}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+    </div>
+    <div>
+        <label for="shared">Shared:</label>
+        <input type="checkbox" id="shared" th:field="*{shared}" />
+    </div>
+    <div>
+        <button type="submit">Update Exercise</button>
+    </div>
+</form>
+<p><a th:href="@{/exercises}">Back to Exercises</a></p>
+</body>
+</html>

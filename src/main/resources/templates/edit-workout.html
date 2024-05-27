@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Edit Workout</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Edit Workout</h1>
+<form th:action="@{/workouts/update}" th:object="${workout}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" th:field="*{date}" required />
+        <label for="name">Workout name:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+    </div>
+    <div>
+        <button type="submit">Update Workout</button>
+    </div>
+</form>
+<p><a th:href="@{/add-workout}">Back to Workouts</a></p>
+</body>
+</html>

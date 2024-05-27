@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -24,15 +26,6 @@ public class Workout_exercise {
    @Column(name = "EXERCISE_NUMBER")
    private Integer exercise_number;
 
-   @Basic
-   @Column(name = "SET_NUMBER")
-   private Integer set_number;
-
-   @Basic
-   @Column(name = "REPS")
-   private Integer reps;
-
-   @Basic
-   @Column(name = "WEIGHT")
-   private Float weight;
+   @OneToMany(mappedBy="workout_exercise", cascade = CascadeType.ALL)
+   private List<Workout_exercise_set> sets;
 }

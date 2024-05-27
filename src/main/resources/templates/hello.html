@@ -8,6 +8,7 @@
 <p th:text="|Hello, ${member.name}!|" />
 <p><a href="/bodyWeight">BodyWeight</a></p>
 <p><a th:href="@{/add-workout}">Add Workout</a></p>
-<p><a th:href="@{index.html}">Logout</a></p>
+<p><a th:href="@{/exercises}">Exercises</a></p> <!-- Ensure this URL matches the controller mapping -->
+<p><a th:href="@{/logout}">Logout</a></p> <!-- Assuming you have a logout endpoint -->
 </body>
 </html>

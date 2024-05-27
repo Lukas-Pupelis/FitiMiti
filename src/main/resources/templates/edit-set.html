@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Edit Set</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Edit Set</h1>
+<form th:action="@{/workouts/exercises/sets/update}" th:object="${workoutExerciseSet}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{workout_exercise.id}"/>
+    <input type="hidden" th:field="*{set_number}"/>
+    <div>
+        <label for="reps">Reps:</label>
+        <input type="number" id="reps" th:field="*{reps}" required />
+    </div>
+    <div>
+        <label for="weight">Weight:</label>
+        <input type="number" step="0.01" id="weight" th:field="*{weight}" required />
+    </div>
+    <div>
+        <button type="submit">Update Set</button>
+    </div>
+</form>
+</body>
+</html>
