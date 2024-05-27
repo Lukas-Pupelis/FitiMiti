@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -95,6 +96,10 @@ public class WorkoutController {
                 .sorted(Comparator.comparingInt(Workout_exercise::getExercise_number))
                 .collect(Collectors.toList());
 
+        workoutExercises.forEach(exercise -> {
+            List<Workout_exercise_set> sets = exercise.getSets();
+            Collections.sort(sets, Comparator.comparingInt(Workout_exercise_set::getSet_number));
+        });
         List<Exercise> sharedExercises = exerciseService.getSharedExercises();
         List<Exercise> memberExercises = exerciseService.getExercisesByMemberId(member.getId());
 
@@ -153,5 +158,37 @@ public class WorkoutController {
         return "redirect:/workouts/" + workoutId + "/exercises"; // Redirect to the exercise list page
     }
 
+    @GetMapping("/workouts/exercises/edit/{exerciseId}")
+    public String showEditWorkoutExerciseForm(@PathVariable Long exerciseId, Model model, @AuthenticationPrincipal OAuth2User principal) {
+        Workout_exercise workoutExercise = workoutExerciseService.getWorkoutExerciseById(exerciseId);
+        Member member = memberService.getMemberByEmail(principal.getAttribute("email"));
+        List<Exercise> sharedExercises = exerciseService.getSharedExercises();
+        List<Exercise> memberExercises = exerciseService.getExercisesByMemberId(member.getId());
+
+        model.addAttribute("workoutExercise", workoutExercise);
+        model.addAttribute("sharedExercises", sharedExercises);
+        model.addAttribute("memberExercises", memberExercises);
+        return "edit-workout-exercise";
+    }
+
+    @PostMapping("/workouts/exercises/update")
+    public String updateWorkoutExercise(@ModelAttribute Workout_exercise workoutExercise, BindingResult result) {
+        if (result.hasErrors()) {
+            result.getAllErrors().forEach(error -> {
+                System.out.println("Validation error: " + error.getDefaultMessage());
+            });
+            return "edit-workout-exercise";
+        }
+        workoutExerciseService.updateWorkoutExercise(workoutExercise);
+        return "redirect:/workouts/" + workoutExercise.getWorkout().getId() + "/exercises";
+    }
+
+    @GetMapping("/workouts/exercises/delete")
+    public String deleteWorkoutExercise(@RequestParam Long id) {
+        Workout_exercise workoutExercise = workoutExerciseService.findById(id);
+        Long workoutId = workoutExercise.getWorkout().getId();
+        workoutExerciseService.deleteWorkoutExercise(id);
+        return "redirect:/workouts/" + workoutId + "/exercises";
+    }
 
 }

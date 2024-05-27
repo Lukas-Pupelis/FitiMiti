@@ -46,7 +46,7 @@
         <li th:each="workoutExercise : ${workoutExercises}" class="exercise-item">
             <span th:text=" ${workoutExercise.exercise.name}"> Exercise Name</span>
             <a th:href="@{|/workouts/exercises/edit/${workoutExercise.id}|}">Change exercise</a>
-            <a th:href="@{|/workouts/exercises/delete/${workoutExercise.id}|}">Delete</a>
+            <a th:href="@{/workouts/exercises/delete(id=${workoutExercise.id})}">Delete</a>
             <a th:href="@{|/workouts/exercises/addset/${workoutExercise.id}|}">Add set</a>
             <table>
                 <thead>

@@ -26,6 +26,6 @@ public class Workout_exercise {
    @Column(name = "EXERCISE_NUMBER")
    private Integer exercise_number;
 
-   @OneToMany(mappedBy="workout_exercise")
+   @OneToMany(mappedBy="workout_exercise", cascade = CascadeType.ALL)
    private List<Workout_exercise_set> sets;
 }

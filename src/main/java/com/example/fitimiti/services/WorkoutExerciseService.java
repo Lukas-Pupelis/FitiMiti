@@ -35,4 +35,22 @@ public class WorkoutExerciseService {
       Optional<Workout_exercise> workoutExerciseOptional = workoutExerciseRepository.findById(id);
       return workoutExerciseOptional.orElse(null);
    }
+
+   public Workout_exercise getWorkoutExerciseById(Long id) {
+      return workoutExerciseRepository.findById(id).orElse(null);
+   }
+
+   public void updateWorkoutExercise(Workout_exercise workoutExercise) {
+      Workout_exercise existingWorkoutExercise = workoutExerciseRepository.findById(workoutExercise.getId())
+              .orElseThrow(() -> new RuntimeException("Workout exercise not found"));
+
+      workoutExercise.setExercise_number(existingWorkoutExercise.getExercise_number());
+      workoutExercise.setWorkout(existingWorkoutExercise.getWorkout());
+
+      workoutExerciseRepository.save(workoutExercise);
+   }
+
+   public void deleteWorkoutExercise(Long id) {
+      workoutExerciseRepository.deleteById(id);
+   }
 }
