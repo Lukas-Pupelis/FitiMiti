@@ -88,21 +88,27 @@ public class WorkoutController {
     public String showWorkoutExercises(@PathVariable Long id, Model model, @AuthenticationPrincipal OAuth2User principal) {
         Workout workout = workoutService.getWorkoutById(id);
         Member member = memberService.getMemberByEmail(principal.getAttribute("email"));
-        List<Workout_exercise> exercises = workoutExerciseService.getExercisesByWorkoutId(id);
+//        List<Workout_exercise> exercises = workoutExerciseService.getExercisesByWorkoutId(id);
+        List<Workout_exercise> workoutExercises = workoutExerciseService.getExercisesByWorkoutId(id)
+                .stream()
+                .sorted(Comparator.comparingInt(Workout_exercise::getExercise_number))
+                .collect(Collectors.toList());
+
         List<Exercise> sharedExercises = exerciseService.getSharedExercises();
         List<Exercise> memberExercises = exerciseService.getExercisesByMemberId(member.getId());
 
-        // Group exercises by exercise_number and their sets by set_number
-        Map<Integer, List<Workout_exercise>> exerciseMap = exercises.stream()
-                .collect(Collectors.groupingBy(Workout_exercise::getExercise_number));
+//        // Group exercises by exercise_number and their sets by set_number
+//        Map<Integer, List<Workout_exercise>> exerciseMap = exercises.stream()
+//                .collect(Collectors.groupingBy(Workout_exercise::getExercise_number));
+//
+//        List<ExerciseGroup> exerciseGroups = exerciseMap.entrySet().stream()
+//                .map(entry -> new ExerciseGroup(entry.getKey(), entry.getValue().get(0).getExercise(), entry.getValue()))
+//                .sorted(Comparator.comparingInt(ExerciseGroup::getExerciseNumber))
+//                .collect(Collectors.toList());
 
-        List<ExerciseGroup> exerciseGroups = exerciseMap.entrySet().stream()
-                .map(entry -> new ExerciseGroup(entry.getKey(), entry.getValue().get(0).getExercise(), entry.getValue()))
-                .sorted(Comparator.comparingInt(ExerciseGroup::getExerciseNumber))
-                .collect(Collectors.toList());
 
         model.addAttribute("workout", workout);
-        model.addAttribute("exerciseGroups", exerciseGroups);
+        model.addAttribute("workoutExercises", workoutExercises);
         model.addAttribute("workoutExercise", new Workout_exercise());
         model.addAttribute("sharedExercises", sharedExercises);
         model.addAttribute("memberExercises", memberExercises);
@@ -117,6 +123,9 @@ public class WorkoutController {
             });
             return "redirect:/workouts/" + id + "/exercises";
         }
+        int exerciseNumber = workoutExerciseService.getExercisesByWorkoutId(id).size() + 1;
+        workoutExercise.setExercise_number(exerciseNumber);
+
         workoutExerciseService.addExerciseToWorkout(id, workoutExercise);
         return "redirect:/workouts/" + id + "/exercises";
     }

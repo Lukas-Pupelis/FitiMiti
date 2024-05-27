@@ -35,14 +35,6 @@
                 <option th:each="exercise : ${memberExercises}" th:value="${exercise.id}" th:text="${exercise.name}"></option>
             </optgroup>
         </select>
-        <label for="exercise_number">Exercise Number:</label>
-        <input type="number" id="exercise_number" th:field="*{exercise_number}" required />
-        <label for="set_number">Set Number:</label>
-        <input type="number" id="set_number" th:field="*{set_number}" required />
-        <label for="reps">Reps:</label>
-        <input type="number" id="reps" th:field="*{reps}" required />
-        <label for="weight">Weight:</label>
-        <input type="number" step="0.01" id="weight" th:field="*{weight}" required />
     </div>
     <div>
         <button type="submit">Add Exercise</button>
@@ -50,49 +42,31 @@
 </form>
 
 <h2>Exercises:</h2>
-<table class="exercise-table">
-    <thead>
-    <tr>
-        <th>Exercise Number</th>
-        <th>Exercise Name</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="exerciseGroup : ${exerciseGroups}">
-        <td th:text="${exerciseGroup.exerciseNumber}">1</td>
-        <td th:text="${exerciseGroup.exercise.name}">Exercise Name</td>
-        <td>
-            <a th:href="@{|/workouts/exercises/edit/${exerciseGroup.exercise.id}|}">Edit</a>
-            <a th:href="@{|/workouts/exercises/delete/${exerciseGroup.exercise.id}|}">Delete</a>
-        </td>
-    </tr>
-    <tr th:each="exerciseGroup : ${exerciseGroups}">
-    <td colspan="3">
-            <table class="set-table">
-                <thead>
-                <tr>
-                    <th>Set Number</th>
-                    <th>Reps</th>
-                    <th>Weight</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="set : ${exerciseGroup.sets}">
-                    <td th:text="${set.set_number}">1</td>
-                    <td th:text="${set.reps}">10</td>
-                    <td th:text="${set.weight}">50.0</td>
-                    <td>
-                        <a th:href="@{|/workouts/sets/edit/${set.id}|}">Edit</a>
-                        <a th:href="@{|/workouts/sets/delete/${set.id}|}">Delete</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <ol>
+        <li th:each="workoutExercise : ${workoutExercises}" class="exercise-item">
+            <span th:text=" ${workoutExercise.exercise.name}"> Exercise Name</span>
+            <a th:href="@{|/workouts/exercises/edit/${workoutExercise.id}|}">Edit</a>
+            <a th:href="@{|/workouts/exercises/delete/${workoutExercise.id}|}">Delete</a>
+        </li>
+    </ol>
+<!--<table class="exercise-table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Exercise Number</th>-->
+<!--        <th>Exercise Name</th>-->
+<!--        <th>Actions</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="exerciseGroup : ${exerciseGroups}">-->
+<!--        <td th:text="${exerciseGroup.exerciseNumber}">1</td>-->
+<!--        <td th:text="${exerciseGroup.exercise.name}">Exercise Name</td>-->
+<!--        <td>-->
+<!--            <a th:href="@{|/workouts/exercises/edit/${exerciseGroup.exercise.id}|}">Edit</a>-->
+<!--            <a th:href="@{|/workouts/exercises/delete/${exerciseGroup.exercise.id}|}">Delete</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 </body>
 </html>

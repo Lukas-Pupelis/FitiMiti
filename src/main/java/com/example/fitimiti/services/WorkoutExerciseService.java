@@ -26,6 +26,7 @@ public class WorkoutExerciseService {
 
    public void addExerciseToWorkout(Long workoutId, Workout_exercise workoutExercise) {
       workoutExercise.setWorkout(workoutRepository.findById(workoutId).orElseThrow(() -> new IllegalArgumentException("Invalid workout ID")));
+      workoutExercise.setId(null);
       workoutExerciseRepository.save(workoutExercise);
    }
 }
