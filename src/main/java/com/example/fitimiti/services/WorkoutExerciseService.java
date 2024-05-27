@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkoutExerciseService {
@@ -28,5 +29,10 @@ public class WorkoutExerciseService {
       workoutExercise.setWorkout(workoutRepository.findById(workoutId).orElseThrow(() -> new IllegalArgumentException("Invalid workout ID")));
       workoutExercise.setId(null);
       workoutExerciseRepository.save(workoutExercise);
+   }
+
+   public Workout_exercise findById(Long id) {
+      Optional<Workout_exercise> workoutExerciseOptional = workoutExerciseRepository.findById(id);
+      return workoutExerciseOptional.orElse(null);
    }
 }

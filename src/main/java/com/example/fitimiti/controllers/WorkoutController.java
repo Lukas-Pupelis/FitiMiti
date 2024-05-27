@@ -1,10 +1,8 @@
 package com.example.fitimiti.controllers;
 
 import com.example.fitimiti.entities.*;
-import com.example.fitimiti.services.ExerciseService;
-import com.example.fitimiti.services.MemberService;
-import com.example.fitimiti.services.WorkoutExerciseService;
-import com.example.fitimiti.services.WorkoutService;
+import com.example.fitimiti.services.*;
+import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -25,13 +23,16 @@ public class WorkoutController {
     private final MemberService memberService;
     private final ExerciseService exerciseService;
     private final WorkoutExerciseService workoutExerciseService;
+    private final WorkoutExerciseSetService workoutExerciseSetService;
+
 
     @Autowired
-    public WorkoutController(WorkoutService workoutService, MemberService memberService, ExerciseService exerciseService, WorkoutExerciseService workoutExerciseService) {
+    public WorkoutController(WorkoutService workoutService, MemberService memberService, ExerciseService exerciseService, WorkoutExerciseService workoutExerciseService, WorkoutExerciseSetService workoutExerciseSetService) {
         this.workoutService = workoutService;
         this.memberService = memberService;
         this.exerciseService = exerciseService;
         this.workoutExerciseService = workoutExerciseService;
+        this.workoutExerciseSetService = workoutExerciseSetService;
     }
 
     @GetMapping("/add-workout")
@@ -97,15 +98,6 @@ public class WorkoutController {
         List<Exercise> sharedExercises = exerciseService.getSharedExercises();
         List<Exercise> memberExercises = exerciseService.getExercisesByMemberId(member.getId());
 
-//        // Group exercises by exercise_number and their sets by set_number
-//        Map<Integer, List<Workout_exercise>> exerciseMap = exercises.stream()
-//                .collect(Collectors.groupingBy(Workout_exercise::getExercise_number));
-//
-//        List<ExerciseGroup> exerciseGroups = exerciseMap.entrySet().stream()
-//                .map(entry -> new ExerciseGroup(entry.getKey(), entry.getValue().get(0).getExercise(), entry.getValue()))
-//                .sorted(Comparator.comparingInt(ExerciseGroup::getExerciseNumber))
-//                .collect(Collectors.toList());
-
 
         model.addAttribute("workout", workout);
         model.addAttribute("workoutExercises", workoutExercises);
@@ -129,4 +121,37 @@ public class WorkoutController {
         workoutExerciseService.addExerciseToWorkout(id, workoutExercise);
         return "redirect:/workouts/" + id + "/exercises";
     }
+
+    @GetMapping("/workouts/exercises/addset/{workoutExerciseId}")
+    public String showAddSetForm(@PathVariable Long workoutExerciseId, Model model) {
+        Workout_exercise workoutExercise = workoutExerciseService.findById(workoutExerciseId);
+        model.addAttribute("workoutExercise", workoutExercise);
+        model.addAttribute("workoutExerciseSet", new Workout_exercise_set());
+        return "add-set-form"; // Assuming you have an HTML template named "add-set-form.html" for the form
+    }
+
+    @PostMapping("/workouts/exercises/addset/{workoutExerciseId}")
+    public String addSetToWorkoutExercise(@RequestParam Long workoutExerciseId, @RequestParam Integer reps, @RequestParam Float weight) {
+        Workout_exercise workoutExercise = workoutExerciseService.findById(workoutExerciseId);
+        if (workoutExercise == null) {
+            // Handle error if workout exercise not found
+            return "redirect:/workouts/exercises"; // Redirect to the exercise list page
+        }
+
+        Long workoutId = workoutExercise.getWorkout().getId();
+        List<Workout_exercise_set> sets = workoutExercise.getSets();
+        int setNumber = sets.size() + 1;
+
+        Workout_exercise_set newSet = new Workout_exercise_set();
+        newSet.setSet_number(setNumber);
+        newSet.setReps(reps);
+        newSet.setWeight(weight);
+        newSet.setWorkout_exercise(workoutExercise);
+
+        workoutExerciseSetService.save(newSet);
+
+        return "redirect:/workouts/" + workoutId + "/exercises"; // Redirect to the exercise list page
+    }
+
+
 }

@@ -45,28 +45,25 @@
     <ol>
         <li th:each="workoutExercise : ${workoutExercises}" class="exercise-item">
             <span th:text=" ${workoutExercise.exercise.name}"> Exercise Name</span>
-            <a th:href="@{|/workouts/exercises/edit/${workoutExercise.id}|}">Edit</a>
+            <a th:href="@{|/workouts/exercises/edit/${workoutExercise.id}|}">Change exercise</a>
             <a th:href="@{|/workouts/exercises/delete/${workoutExercise.id}|}">Delete</a>
+            <a th:href="@{|/workouts/exercises/addset/${workoutExercise.id}|}">Add set</a>
+            <table>
+                <thead>
+                <tr>
+                    <th>Reps</th>
+                    <th>Weight</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="set : ${workoutExercise.sets}">
+<!--                    <td th:text="${set.set_number}"></td>-->
+                    <td th:text="${set.reps}"></td>
+                    <td th:text="${set.weight}"></td>
+                </tr>
+                </tbody>
+            </table>
         </li>
     </ol>
-<!--<table class="exercise-table">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Exercise Number</th>-->
-<!--        <th>Exercise Name</th>-->
-<!--        <th>Actions</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="exerciseGroup : ${exerciseGroups}">-->
-<!--        <td th:text="${exerciseGroup.exerciseNumber}">1</td>-->
-<!--        <td th:text="${exerciseGroup.exercise.name}">Exercise Name</td>-->
-<!--        <td>-->
-<!--            <a th:href="@{|/workouts/exercises/edit/${exerciseGroup.exercise.id}|}">Edit</a>-->
-<!--            <a th:href="@{|/workouts/exercises/delete/${exerciseGroup.exercise.id}|}">Delete</a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
 </body>
 </html>
