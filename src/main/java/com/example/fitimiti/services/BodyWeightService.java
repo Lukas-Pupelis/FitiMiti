@@ -6,13 +6,23 @@ import com.example.fitimiti.entities.Member_weight_entry;
 import com.example.fitimiti.repositories.BodyWeightRepository;
 import com.example.fitimiti.repositories.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
+@EnableAsync
 @Service
 public class BodyWeightService {
+
+
     private final BodyWeightRepository bodyWeightRepository;
     private final MemberRepository memberRepository;
 
@@ -22,7 +32,6 @@ public class BodyWeightService {
         this.memberRepository = memberRepository;
     }
 
-    @Transactional
     public List<Member_weight_entry> getBodyWeightByMemberId(Long memberId, String period) {
         try {
             return bodyWeightRepository.findByMemberId(memberId);
@@ -39,7 +48,16 @@ public class BodyWeightService {
         bodyWeightRepository.save(weightEntry);
     }
 
-    public List<DateWeight> getDateWeightByMemberId(Long memberId) {
-        return bodyWeightRepository.findByMemberIdOrderByDateAsc(memberId);
+
+    @Async
+    public CompletableFuture<List<DateWeight>> getDateWeightByMemberId(Long memberId, String period) {
+        LocalDate startDate = Period.getStartDateForPeriod(period);
+        Date start = Date.from(startDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        List<DateWeight> dateWeights = bodyWeightRepository.findByMemberIdOrderByDateAsc(memberId);
+        return CompletableFuture.completedFuture(dateWeights.stream()
+                .filter(dw -> !dw.date().before(start))
+                .collect(Collectors.toList()));
     }
 }
+
