@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Edit Workout Exercise</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Edit Exercise</h1>
+
+<form th:action="@{/workouts/exercises/update}" th:object="${workoutExercise}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:field="*{workout.id}" />
+    <div>
+        <label for="exerciseSelect">Select Exercise:</label>
+        <select id="exerciseSelect" th:field="*{exercise.id}" required>
+            <option value="">-- Select Exercise --</option>
+            <optgroup label="Shared Exercises">
+                <option th:each="exercise : ${sharedExercises}" th:value="${exercise.id}" th:text="${exercise.name}"></option>
+            </optgroup>
+            <optgroup label="My Exercises">
+                <option th:each="exercise : ${memberExercises}" th:value="${exercise.id}" th:text="${exercise.name}"></option>
+            </optgroup>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Update Exercise</button>
+    </div>
+</form>
+
+<a th:href="@{|/workouts/${workoutExercise.workout.id}/exercises|}">Back to Exercises</a>
+
+</body>
+</html>

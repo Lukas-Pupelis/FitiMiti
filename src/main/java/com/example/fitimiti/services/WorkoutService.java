@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkoutService {
@@ -33,6 +34,19 @@ public class WorkoutService {
         return workoutRepository.save(workout);
     }
 
+    public Workout getWorkoutById(Long id) {
+        return workoutRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Workout not found for id: " + id));
+    }
+
+    public void updateWorkout(String email, Workout workout) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        if (optionalMember.isPresent()) {
+            workout.setMember(optionalMember.get());
+            workoutRepository.save(workout);
+        } else {
+            throw new IllegalArgumentException("Member not found for email: " + email);
+        }
+    }
     public void deleteWorkout(Long id) {
         workoutRepository.deleteById(id);
     }
