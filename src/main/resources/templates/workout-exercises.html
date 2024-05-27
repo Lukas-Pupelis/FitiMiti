@@ -53,6 +53,7 @@
                 <tr>
                     <th>Reps</th>
                     <th>Weight</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -60,6 +61,10 @@
 <!--                    <td th:text="${set.set_number}"></td>-->
                     <td th:text="${set.reps}"></td>
                     <td th:text="${set.weight}"></td>
+                    <td>
+                        <a th:href="@{|/workouts/exercises/sets/edit/${set.id}|}">Edit</a>
+                        <a th:href="@{|/workouts/exercises/sets/delete?id=${set.id}|}">Delete</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

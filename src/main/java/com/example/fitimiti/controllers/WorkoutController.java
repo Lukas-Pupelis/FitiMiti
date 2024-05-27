@@ -2,6 +2,7 @@ package com.example.fitimiti.controllers;
 
 import com.example.fitimiti.entities.*;
 import com.example.fitimiti.services.*;
+import jakarta.websocket.server.PathParam;
 import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -191,4 +192,29 @@ public class WorkoutController {
         return "redirect:/workouts/" + workoutId + "/exercises";
     }
 
+    @GetMapping("/workouts/exercises/sets/edit/{setId}")
+    public String showEditSetForm(@PathVariable Long setId, Model model) {
+        Workout_exercise_set workoutExerciseSet = workoutExerciseSetService.getWorkoutExerciseSetById(setId);
+        model.addAttribute("workoutExerciseSet", workoutExerciseSet);
+        return "edit-set";
+    }
+    @PostMapping("/workouts/exercises/sets/update")
+    public String updateSet(@ModelAttribute Workout_exercise_set workoutExerciseSet, BindingResult result) {
+        if (result.hasErrors()) {
+            return "edit-set";
+        }
+        Workout_exercise_set existingSet = workoutExerciseSetService.getWorkoutExerciseSetById(workoutExerciseSet.getId());
+        existingSet.setReps(workoutExerciseSet.getReps());
+        existingSet.setWeight(workoutExerciseSet.getWeight());
+        workoutExerciseSetService.updateWorkoutExerciseSet(existingSet);
+        return "redirect:/workouts/" + existingSet.getWorkout_exercise().getWorkout().getId() + "/exercises";
+    }
+
+    @GetMapping("/workouts/exercises/sets/delete")
+    public String deleteSet(@RequestParam Long id) {
+        Workout_exercise_set set = workoutExerciseSetService.getWorkoutExerciseSetById(id);
+        Long workoutId = set.getWorkout_exercise().getWorkout().getId();
+        workoutExerciseSetService.deleteWorkoutExerciseSet(id);
+        return "redirect:/workouts/" + workoutId + "/exercises";
+    }
 }

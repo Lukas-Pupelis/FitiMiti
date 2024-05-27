@@ -18,4 +18,15 @@ public class WorkoutExerciseSetService {
    public Workout_exercise_set save(Workout_exercise_set set) {
       return workoutExerciseSetRepository.save(set);
    }
+
+   public Workout_exercise_set getWorkoutExerciseSetById(Long id) {
+      return workoutExerciseSetRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid set Id:" + id));
+   }
+   public void updateWorkoutExerciseSet(Workout_exercise_set workoutExerciseSet) {
+      workoutExerciseSetRepository.save(workoutExerciseSet);
+   }
+
+   public void deleteWorkoutExerciseSet(Long id) {
+      workoutExerciseSetRepository.deleteById(id);
+   }
 }
