@@ -12,10 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 
 @Controller
+@RequestScope
 @RequestMapping("/bodyWeight")
 public class BodyWeightController {
     private final BodyWeightService bodyWeightService;
@@ -28,7 +30,7 @@ public class BodyWeightController {
     }
 
     @PostMapping
-    public String addWeight(@AuthenticationPrincipal OAuth2User principal, @ModelAttribute Member_weight_entry weightEntry, BindingResult result, Model model) {
+    public String addWeight(@AuthenticationPrincipal OAuth2User principal, @ModelAttribute Member_weight_entry weightEntry, BindingResult result) {
         String email = principal.getAttribute("email");
         Member member = memberService.getMemberByEmail(email);
         if (member == null) {
@@ -54,7 +56,7 @@ public class BodyWeightController {
         }
 
         List<Member_weight_entry> weights = bodyWeightService.getBodyWeightByMemberId(member.getId(), period);
-        Member_weight_entry weight = null;
+        Member_weight_entry weight;
         try {
             weight = weights.get(weights.size() - 1);
         } catch (IndexOutOfBoundsException e) {
@@ -71,6 +73,7 @@ public class BodyWeightController {
     public List<DateWeight> getWeights(@RequestParam(defaultValue = "3m") String period, @AuthenticationPrincipal OAuth2User principal) {
         String email = principal.getAttribute("email");
         Member member = memberService.getMemberByEmail(email);
-        return bodyWeightService.getDateWeightByMemberId(member.getId());
+        var futureWeights = bodyWeightService.getDateWeightByMemberId(member.getId(), period);
+        return futureWeights.join();
     }
 }
