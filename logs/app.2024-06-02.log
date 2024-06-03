@@ -1,0 +1,165 @@
+2024-06-02 22:52:48 - Starting FitiMitiApplication using Java 17.0.11 with PID 19648 (C:\Main Files\Programming\PSK labs\GroupTask\target\classes started by BigDaddy in C:\Main Files\Programming\PSK labs\GroupTask)
+2024-06-02 22:52:48 - No active profile set, falling back to 1 default profile: "default"
+2024-06-02 22:52:50 - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-02 22:52:50 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-06-02 22:52:50 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.BodyWeightRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 22:52:50 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.ExerciseRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 22:52:50 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 22:52:50 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.WorkoutExerciseRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 22:52:50 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.WorkoutExerciseSetRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 22:52:50 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.WorkoutRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 22:52:50 - Finished Spring Data repository scanning in 80 ms. Found 0 JDBC repository interfaces.
+2024-06-02 22:52:50 - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-02 22:52:50 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-02 22:52:50 - Finished Spring Data repository scanning in 67 ms. Found 6 JPA repository interfaces.
+2024-06-02 22:52:52 - Tomcat initialized with port 8080 (http)
+2024-06-02 22:52:52 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-02 22:52:52 - Starting service [Tomcat]
+2024-06-02 22:52:52 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-02 22:52:52 - Initializing Spring embedded WebApplicationContext
+2024-06-02 22:52:52 - Root WebApplicationContext: initialization completed in 4005 ms
+2024-06-02 22:52:52 - HikariPool-1 - Starting...
+2024-06-02 22:52:55 - HikariPool-1 - Added connection conn1: url=jdbc:h2:file:~/h2database/fitimitiDB user=SA
+2024-06-02 22:52:55 - HikariPool-1 - Start completed.
+2024-06-02 22:52:55 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:~/h2database/fitimitiDB'
+2024-06-02 22:52:56 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-02 22:52:56 - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-02 22:52:56 - HHH000026: Second-level cache disabled
+2024-06-02 22:52:56 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-02 22:52:57 - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-02 22:52:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-02 22:52:59 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-02 22:53:01 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-02 22:53:01 - Adding welcome page: class path resource [static/index.html]
+2024-06-02 22:53:02 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@31d51518, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@509bf2d5, org.springframework.security.web.context.SecurityContextHolderFilter@3c5d183, org.springframework.security.web.header.HeaderWriterFilter@6124a7c0, org.springframework.web.filter.CorsFilter@68823b6b, org.springframework.security.web.csrf.CsrfFilter@520034a, org.springframework.security.web.authentication.logout.LogoutFilter@25fb43a9, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@cc4a0dd, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@4f78adf, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@78c34153, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4b4b02d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39cf7f3c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25df95b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1dd01876, org.springframework.security.web.access.ExceptionTranslationFilter@699fe19f, org.springframework.security.web.access.intercept.AuthorizationFilter@2c10f9f3]
+2024-06-02 22:53:03 - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-02 22:53:03 - Tomcat started on port 8080 (http) with context path ''
+2024-06-02 22:53:03 - Started FitiMitiApplication in 16.155 seconds (process running for 18.6)
+2024-06-02 22:53:40 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-02 22:53:40 - Initializing Servlet 'dispatcherServlet'
+2024-06-02 22:53:40 - Completed initialization in 3 ms
+2024-06-02 22:53:49 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=E6Wge6_RqNrOemk3ZVIL8Q, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=ED269zeADAYP6ykkCrWyr9orUFWJxkdshUAwLyOhg04, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T20:53:49Z, family_name=reikalas, iat=2024-06-02T19:53:49Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T22:53:49.443912400, Action: Executing
+2024-06-02 22:53:49 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=E6Wge6_RqNrOemk3ZVIL8Q, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=ED269zeADAYP6ykkCrWyr9orUFWJxkdshUAwLyOhg04, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T20:53:49Z, family_name=reikalas, iat=2024-06-02T19:53:49Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T22:53:49.700245600, Action: Completed
+2024-06-02 22:53:52 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=E6Wge6_RqNrOemk3ZVIL8Q, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=ED269zeADAYP6ykkCrWyr9orUFWJxkdshUAwLyOhg04, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T20:53:49Z, family_name=reikalas, iat=2024-06-02T19:53:49Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T22:53:52.706203800, Action: Executing
+2024-06-02 22:53:52 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=E6Wge6_RqNrOemk3ZVIL8Q, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=ED269zeADAYP6ykkCrWyr9orUFWJxkdshUAwLyOhg04, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T20:53:49Z, family_name=reikalas, iat=2024-06-02T19:53:49Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T22:53:52.710357100, Action: Completed
+2024-06-02 22:53:52 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.util.concurrent.CompletionException: java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.Authentication.getPrincipal()" because the return value of "org.springframework.security.core.context.SecurityContext.getAuthentication()" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.Authentication.getPrincipal()" because the return value of "org.springframework.security.core.context.SecurityContext.getAuthentication()" is null
+	at com.example.fitimiti.aspects.LoggingAspect.getUsername(LoggingAspect.java:40)
+	at com.example.fitimiti.aspects.LoggingAspect.logBeforeMethodExecution(LoggingAspect.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:637)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:620)
+	at org.springframework.aop.aspectj.AspectJMethodBeforeAdvice.before(AspectJMethodBeforeAdvice.java:44)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:57)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:113)
+	at org.springframework.util.concurrent.FutureUtils.lambda$toSupplier$0(FutureUtils.java:74)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2024-06-02 23:19:21 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-02 23:19:21 - HikariPool-1 - Shutdown initiated...
+2024-06-02 23:19:21 - HikariPool-1 - Shutdown completed.
+2024-06-02 23:19:28 - Starting FitiMitiApplication using Java 17.0.11 with PID 17436 (C:\Main Files\Programming\PSK labs\GroupTask\target\classes started by BigDaddy in C:\Main Files\Programming\PSK labs\GroupTask)
+2024-06-02 23:19:28 - No active profile set, falling back to 1 default profile: "default"
+2024-06-02 23:19:29 - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-02 23:19:29 - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-06-02 23:19:29 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.BodyWeightRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 23:19:29 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.ExerciseRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 23:19:29 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.MemberRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 23:19:29 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.WorkoutExerciseRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 23:19:29 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.WorkoutExerciseSetRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 23:19:29 - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.fitimiti.repositories.WorkoutRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-02 23:19:29 - Finished Spring Data repository scanning in 52 ms. Found 0 JDBC repository interfaces.
+2024-06-02 23:19:29 - Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-02 23:19:29 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-02 23:19:29 - Finished Spring Data repository scanning in 49 ms. Found 6 JPA repository interfaces.
+2024-06-02 23:19:30 - Tomcat initialized with port 8080 (http)
+2024-06-02 23:19:30 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-06-02 23:19:30 - Starting service [Tomcat]
+2024-06-02 23:19:30 - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-06-02 23:19:30 - Initializing Spring embedded WebApplicationContext
+2024-06-02 23:19:30 - Root WebApplicationContext: initialization completed in 2653 ms
+2024-06-02 23:19:30 - HikariPool-1 - Starting...
+2024-06-02 23:19:31 - HikariPool-1 - Added connection conn1: url=jdbc:h2:file:~/h2database/fitimitiDB user=SA
+2024-06-02 23:19:31 - HikariPool-1 - Start completed.
+2024-06-02 23:19:31 - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:~/h2database/fitimitiDB'
+2024-06-02 23:19:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-02 23:19:31 - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-06-02 23:19:31 - HHH000026: Second-level cache disabled
+2024-06-02 23:19:32 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-02 23:19:32 - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-02 23:19:33 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-02 23:19:34 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-02 23:19:35 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-02 23:19:35 - Adding welcome page: class path resource [static/index.html]
+2024-06-02 23:19:36 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1b079e81, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1fae388c, org.springframework.security.web.context.SecurityContextHolderFilter@448c4742, org.springframework.security.web.header.HeaderWriterFilter@41a6ab50, org.springframework.web.filter.CorsFilter@2387e60b, org.springframework.security.web.csrf.CsrfFilter@5ef03158, org.springframework.security.web.authentication.logout.LogoutFilter@59c2bf78, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@33da0fad, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@1cd4082a, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@b7b26c6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@41acf2f1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@118cbb26, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6cca70e3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66f88fd3, org.springframework.security.web.access.ExceptionTranslationFilter@3123ac1a, org.springframework.security.web.access.intercept.AuthorizationFilter@cfe881a]
+2024-06-02 23:19:37 - Starting ProtocolHandler ["http-nio-8080"]
+2024-06-02 23:19:37 - Tomcat started on port 8080 (http) with context path ''
+2024-06-02 23:19:37 - Started FitiMitiApplication in 10.01 seconds (process running for 10.976)
+2024-06-02 23:21:16 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-02 23:21:16 - Initializing Servlet 'dispatcherServlet'
+2024-06-02 23:21:16 - Completed initialization in 2 ms
+2024-06-02 23:21:23 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T23:21:23.538736600, Action: Executing
+2024-06-02 23:21:23 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T23:21:23.767914400, Action: Completed
+2024-06-02 23:21:23 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: BodyWeightService.getBodyWeightByMemberId(..), Time: 2024-06-02T23:21:23.768931200, Action: Executing
+2024-06-02 23:21:23 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: BodyWeightService.getBodyWeightByMemberId(..), Time: 2024-06-02T23:21:23.828394700, Action: Completed
+2024-06-02 23:21:24 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T23:21:24.883825300, Action: Executing
+2024-06-02 23:21:24 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T23:21:24.888824800, Action: Completed
+2024-06-02 23:21:24 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.util.concurrent.CompletionException: java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.Authentication.getPrincipal()" because the return value of "org.springframework.security.core.context.SecurityContext.getAuthentication()" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.Authentication.getPrincipal()" because the return value of "org.springframework.security.core.context.SecurityContext.getAuthentication()" is null
+	at com.example.fitimiti.aspects.LoggingAspect.getUsername(LoggingAspect.java:40)
+	at com.example.fitimiti.aspects.LoggingAspect.logBeforeMethodExecution(LoggingAspect.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:637)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:620)
+	at org.springframework.aop.aspectj.AspectJMethodBeforeAdvice.before(AspectJMethodBeforeAdvice.java:44)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:57)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:113)
+	at org.springframework.util.concurrent.FutureUtils.lambda$toSupplier$0(FutureUtils.java:74)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2024-06-02 23:21:40 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T23:21:40.266507500, Action: Executing
+2024-06-02 23:21:40 - User: Name: [109705015176206177869], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=yBKXPn57jNz1f0JHFu5lYQ, sub=109705015176206177869, email_verified=true, iss=https://accounts.google.com, given_name=netavo, nonce=jT__jiPCcYhy6GgwCpXPdpgsuhGg83o1gRemhLZumd8, picture=https://lh3.googleusercontent.com/a/ACg8ocKM2dpd7U-NLKk_Hx6gnO4IvwuPfIwoZkXprznW_12OYmp_zA=s96-c, aud=[979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com], azp=979738379904-osklkodlgslb91bvkbnrvmeh3g0gtou2.apps.googleusercontent.com, name=netavo reikalas, exp=2024-06-02T21:21:23Z, family_name=reikalas, iat=2024-06-02T20:21:23Z, email=sukkairen8mylios@gmail.com}], Method: MemberService.getMemberByEmail(..), Time: 2024-06-02T23:21:40.269772100, Action: Completed
+2024-06-02 23:21:40 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.util.concurrent.CompletionException: java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.Authentication.getPrincipal()" because the return value of "org.springframework.security.core.context.SecurityContext.getAuthentication()" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "org.springframework.security.core.Authentication.getPrincipal()" because the return value of "org.springframework.security.core.context.SecurityContext.getAuthentication()" is null
+	at com.example.fitimiti.aspects.LoggingAspect.getUsername(LoggingAspect.java:40)
+	at com.example.fitimiti.aspects.LoggingAspect.logBeforeMethodExecution(LoggingAspect.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:637)
+	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:620)
+	at org.springframework.aop.aspectj.AspectJMethodBeforeAdvice.before(AspectJMethodBeforeAdvice.java:44)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:57)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:113)
+	at org.springframework.util.concurrent.FutureUtils.lambda$toSupplier$0(FutureUtils.java:74)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2024-06-02 23:29:46 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m14s902ms957µs400ns).
