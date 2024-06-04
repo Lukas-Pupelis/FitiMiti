@@ -1,14 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9;
+    }
+
+    a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: x-large;
+        margin: 10px 0;
+    }
+
+</style>
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/applicationDesign.css">
 </head>
 <body>
 <p th:text="|Hello, ${member.name}!|" />
-<p><a href="/bodyWeight">BodyWeight</a></p>
-<p><a th:href="@{/add-workout}">Add Workout</a></p>
-<p><a th:href="@{/exercises}">Exercises</a></p> <!-- Ensure this URL matches the controller mapping -->
-<p><a th:href="@{/logout}">Logout</a></p> <!-- Assuming you have a logout endpoint -->
+<p><a href="/bodyWeight">Body weight</a></p>
+<p><a th:href="@{/add-workout}">Workouts</a></p>
+<p><a th:href="@{/exercises}">Exercises</a></p>
+<p><a th:href="@{/logout}">Logout</a></p>
 </body>
 </html>

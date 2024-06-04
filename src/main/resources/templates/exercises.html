@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Exercises</title>
+    <link rel="stylesheet" href="/applicationDesign.css">
 </head>
 <body>
 <p><a th:href="@{/hello}">Go Back</a></p> <!-- Assuming you have a logout endpoint -->
@@ -12,8 +13,8 @@
     <p th:text="${error}"></p>
 </div>
 
-<h2>Add New Exercise</h2>
 <form th:action="@{/exercises}" th:object="${exercise}" method="post">
+    <h3>Add New Exercise</h3>
     <div>
         <label for="name">Name:</label>
         <input type="text" id="name" th:field="*{name}" required />
@@ -26,6 +27,8 @@
         <button type="submit">Add Exercise</button>
     </div>
 </form>
+
+<div class="centered-line"></div>
 
 <h2>My Exercises</h2>
 <table>
@@ -44,6 +47,7 @@
         <td th:text="${exercise.shared}"></td>
         <td>
             <a th:href="@{/exercises/edit(id=${exercise.id})}">Edit</a>
+             |
             <a th:href="@{/exercises/delete(id=${exercise.id})}">Delete</a>
         </td>
     </tr>

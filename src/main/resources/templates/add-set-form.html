@@ -3,19 +3,22 @@
 <head>
     <title>Add Set</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/applicationDesign.css">
 </head>
 <body>
-<h1>Add Set for workout <span th:text="${workoutExercise.workout.name}"></span></h1>
-<h1><span th:text="${workoutExercise.exercise.name}"></span> exercise</h1>
+<h1>Add Set for workout: <span th:text="${workoutExercise.workout.name}" style=""></span></h1>
+<div class="centered-line"></div>
+<h1><span th:text="${workoutExercise.exercise.name}"></span></h1>
 <form th:action="@{/workouts/exercises/addset/{workoutExerciseId}}" th:object="${workoutExerciseSet}" method="post">
     <input type="hidden" name="workoutExerciseId" th:value="${workoutExercise.id}">
     <div>
         <label for="reps">Reps:</label>
-        <input type="number" id="reps" name="reps" required>
+        <input type="number" id="reps" name="reps" placeholder="15" required>
+
     </div>
     <div>
-        <label for="weight">Weight:</label>
-        <input type="number" id="weight" name="weight" step="0.01" required>
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="0.01" placeholder="20" required>
     </div>
     <button type="submit">Add Set</button>
 </form>
