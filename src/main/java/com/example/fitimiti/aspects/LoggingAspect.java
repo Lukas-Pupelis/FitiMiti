@@ -1,4 +1,3 @@
-
 package com.example.fitimiti.aspects;
 
 import org.aspectj.lang.JoinPoint;
@@ -18,6 +17,7 @@ import java.time.LocalDateTime;
 public class LoggingAspect {
 
    private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
+
 
    @Before("execution(* com.example.fitimiti.services..*(..)) && !within(com.example.fitimiti.services.BodyWeightService)")
    public void logBeforeMethodExecution(JoinPoint joinPoint) {
