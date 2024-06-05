@@ -49,7 +49,6 @@ public class BodyWeightService {
 
     private  CompletableFuture<List<DateWeight>> selfInvocationDateWeight(Long memberId, String period){
         LocalDate startDate = Period.getStartDateForPeriod(period);
-        System.out.println(startDate + " ");
         Date start = Date.from(startDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
         List<DateWeight> dateWeights = bodyWeightRepository.findByMemberIdOrderByDateAsc(memberId);
