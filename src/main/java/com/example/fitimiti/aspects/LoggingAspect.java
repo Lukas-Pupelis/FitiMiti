@@ -18,7 +18,7 @@ public class LoggingAspect {
 
    private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-   @Before("execution(* com.example.fitimiti.services.*.*(..))")
+   @Before("execution(* com.example.fitimiti.services..*(..)) && !within(com.example.fitimiti.services.BodyWeightService)")
    public void logBeforeMethodExecution(JoinPoint joinPoint) {
       String username = getUsername();
       String methodName = joinPoint.getSignature().toShortString();
@@ -27,7 +27,7 @@ public class LoggingAspect {
       logger.info("User: {}, Method: {}, Time: {}, Action: Executing", username, methodName, timeStamp);
    }
 
-   @AfterReturning("execution(* com.example.fitimiti.services.*.*(..))")
+   @AfterReturning("execution(* com.example.fitimiti.services..*(..)) && !within(com.example.fitimiti.services.BodyWeightService)")
    public void logAfterMethodExecution(JoinPoint joinPoint) {
       String username = getUsername();
       String methodName = joinPoint.getSignature().toShortString();

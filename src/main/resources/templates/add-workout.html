@@ -3,10 +3,15 @@
 <head>
   <title>Add Workout</title>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/applicationDesign.css">
 </head>
 <body>
-<h1>Add Workout</h1>
+<p><a th:href="@{/hello}">Get back</a></p>
+<h1>Workouts</h1>
 <form th:action="@{/add-workout}" th:object="${workout}" method="post">
+  <div>
+    <h3>Add new workout</h3>
+  </div>
   <div>
     <label for="date">Date:</label>
     <input type="date" id="date" th:field="*{date}" required />
@@ -17,27 +22,32 @@
     <button type="submit">Add Workout</button>
   </div>
 </form>
-<p><a th:href="@{/hello}">Get back</a></p>
 
-<h1 th:text="${member.name} + ' workouts:'"></h1>
+<div class="centered-line"></div>
+
+<h1 th:text="${member.name}"></h1>
 <table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Date</th>
-    <th>Workout Name</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>ID</th>-->
+<!--    <th>Date</th>-->
+<!--    <th>Workout Name</th>-->
+<!--    <th>Actions</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
   <tbody>
   <tr th:each="workout : ${workouts}">
-    <td th:text="${workout.id}">1</td>
-    <td th:text="${workout.date}">2024-05-23</td>
-    <td th:text="${workout.name}">Chest</td>
+<!--    <td th:text="${workout.id}">1</td>-->
+    <td th:text="${workout.date}">-</td>
+    <td style="font-size: larger; font-weight: bold">
+      <a th:href="@{/workouts/{id}/exercises(id=${workout.id})}" th:text="${workout.name}">Workout Name</a>
+    </td>
+
     <td>
       <a th:href="@{/workouts/edit(id=${workout.id})}">Edit</a>
+      |
       <a th:href="@{/workouts/delete(id=${workout.id})}">Delete</a>
-      <a th:href="@{/workouts/{id}/exercises(id=${workout.id})}">View Workout</a>
+<!--      <a th:href="@{/workouts/{id}/exercises(id=${workout.id})}">View Workout</a>-->
     </td>
   </tr>
   </tbody>

@@ -2,9 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Edit Exercise</title>
+    <link rel="stylesheet" href="/applicationDesign.css">
 </head>
 <body>
 <h1>Edit Exercise</h1>
+
+<div class="centered-line"></div>
+
 <form th:action="@{/exercises/update}" th:object="${exercise}" method="post">
     <input type="hidden" th:field="*{id}" />
     <div>

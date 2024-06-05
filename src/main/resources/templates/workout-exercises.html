@@ -3,6 +3,7 @@
 <head>
     <title>Workout Exercises</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/applicationDesign.css">
     <style>
         .exercise-table, .set-table {
             width: 100%;
@@ -41,13 +42,20 @@
     </div>
 </form>
 
+<div class="centered-line"></div>
+
 <h2>Exercises:</h2>
     <ol>
         <li th:each="workoutExercise : ${workoutExercises}" class="exercise-item">
-            <span th:text=" ${workoutExercise.exercise.name}"> Exercise Name</span>
-            <a th:href="@{|/workouts/exercises/edit/${workoutExercise.id}|}">Change exercise</a>
-            <a th:href="@{/workouts/exercises/delete(id=${workoutExercise.id})}">Delete</a>
-            <a th:href="@{|/workouts/exercises/addset/${workoutExercise.id}|}">Add set</a>
+            <div>
+                <span th:text=" ${workoutExercise.exercise.name}"> Exercise Name</span>
+                |
+                <a th:href="@{|/workouts/exercises/edit/${workoutExercise.id}|}">Change exercise</a>
+                |
+                <a th:href="@{/workouts/exercises/delete(id=${workoutExercise.id})}">Delete</a>
+                |
+                <a th:href="@{|/workouts/exercises/addset/${workoutExercise.id}|}">Add set</a>
+            </div>
             <table>
                 <thead>
                 <tr>
@@ -60,9 +68,10 @@
                 <tr th:each="set : ${workoutExercise.sets}">
 <!--                    <td th:text="${set.set_number}"></td>-->
                     <td th:text="${set.reps}"></td>
-                    <td th:text="${set.weight}"></td>
+                    <td th:text="${set.weight + 'kg'}"></td>
                     <td>
                         <a th:href="@{|/workouts/exercises/sets/edit/${set.id}|}">Edit</a>
+                        |
                         <a th:href="@{|/workouts/exercises/sets/delete?id=${set.id}|}">Delete</a>
                     </td>
                 </tr>
